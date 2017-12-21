@@ -2,14 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../css/board.css';
 import Cell from './cell';
+import Piece from './piece';
 
 class Board extends React.Component {
 
     constructor(props){
         super(props);
         this.state = {
-            // board: this.createBoard(),
+
         };
+
+        this.pieces = props.pieces;
         this.board = this.createBoard();
     }
 
@@ -62,10 +65,14 @@ class Board extends React.Component {
         return rowCells;
     }
 
+
   render() {
       return (
           <div className='board'>
               {this.createCells()}
+              <div className='piecesOnBord'>
+                  {this.pieces}
+              </div>
           </div>
       );
   }

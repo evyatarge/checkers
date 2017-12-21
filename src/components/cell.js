@@ -16,6 +16,7 @@ class Cell extends React.Component {
             this.cellColor = props.color;
     }
 
+
   render() {
       var nameClass = 'cell '+ this.cellColor;
         return (

@@ -9,14 +9,14 @@ class Piece extends React.Component {
             this.state = {
                 pieceRow : props.row,
                 pieceColumn : props.col,
-                pieceColor : props.color,
             };
+            this.pieceColor = props.pieceColor;
     }
 
   render() {
+      var nameClass = 'piece '+ this.pieceColor;
       return (
-          <div>
-              <Piece className= 'piece {this.getStatcellColor}'/>
+          <div className={nameClass}>
           </div>
       );
   }

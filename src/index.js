@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
-import Board from './components/board';
-import Piece from './components/piece';
+import Game from './components/game';
 
 import registerServiceWorker from './registerServiceWorker';
 
+
 ReactDOM.render(
 
-    <Board />, document.getElementById('root')
+    <Game />, document.getElementById('root')
 
     );
 
