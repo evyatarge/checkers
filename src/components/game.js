@@ -33,10 +33,11 @@ class Game extends React.Component {
     }
     initBlacks(blackPieces){
         var pieces = [];
-        var row=0, piecesInRow=4;
+        var row=7, piecesInRow=4;
         for(var i=0; i<blackPieces.length; i++){
-            row = i%piecesInRow;
+            row = row-(i%piecesInRow);
             let column = this.calculateColumn(i,row);
+            column = (column%2)==0 ? column+1 : column-1;
             pieces.push(<Piece pieceRow={row} pieceColumn={column} pieceColor='black'/>);
         }
         return pieces;
@@ -52,7 +53,7 @@ class Game extends React.Component {
   render() {
       return (
           <Board pieces={this.initPieces()} />
-          
+
       );
   }
 
