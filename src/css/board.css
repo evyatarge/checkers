@@ -1,0 +1,7 @@
+.board{
+    width: inherit;
+    height: inherit;
+    border-width: 10px;
+    border-color: black;
+    border-style: solid;
+}

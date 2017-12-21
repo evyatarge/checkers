@@ -1,0 +1,10 @@
+body {
+  margin: 20px;
+  padding: 10px;
+  width: 80%;
+  height: 80%;
+}
+#root{
+    width: inherit;
+    height: inherit;
+}
