@@ -15,9 +15,10 @@ class Board extends React.Component {
 
     createBoard(){
         const board = new Array(8);
-        for(var i in board){
-            i = new Array(8);
+        for(var i=0; i<board.length; i++){
+            board[i] = new Array(8);
         }
+        return board;
     }
 
     setColor(row, col){
@@ -43,27 +44,28 @@ class Board extends React.Component {
         return(num%2);
     }
 
-    createCells(){//TODO - consider if this is the right place
-        this.board.map((row) => {
-            return(this.createRowCells(row));//end of return for row
-        });//end of map for rows
+    createCells(){
+        let allCells = [];
+        for(var row=0; row<this.board.length; row++){
+            let rowCells = this.createRowCells(this.board[row],row);
+            allCells.push(rowCells);
+        }
+        return allCells;
     }
 
-    createRowCells(row){
-        row.map((col) => {
-            let rowNumber = this.board.indexOf(row);
-            let colNumber = row.indexOf(col);
-            let color = this.setColor(rowNumber,colNumber);
-            return(
-                <Cell row={rowNumber} col={colNumber} color={color}/>
-            );//end of return for col
-        });//end of map for cols
+    createRowCells(row, rowNumber){
+        let rowCells = [];
+        for(var col=0; col<row.length; col++){
+            let color = this.setColor(rowNumber,col);
+            rowCells.push(<Cell row={rowNumber} col={col} color={color}/>)
+        }
+        return rowCells;
     }
 
   render() {
       return (
           <div className='board'>
-              {this.createCells}
+              {this.createCells()}
           </div>
       );
   }

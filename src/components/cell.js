@@ -11,13 +11,15 @@ class Cell extends React.Component {
             this.state = {
                 cellRow : props.row,
                 cellColumn : props.col,
-                cellColor : props.color,
             };
+
+            this.cellColor = props.color;
     }
 
   render() {
+      var nameClass = 'cell '+ this.cellColor;
         return (
-            <div className='cell {this.getStatcellColor}'>
+            <div className= {nameClass}>
             </div>
         );
   }

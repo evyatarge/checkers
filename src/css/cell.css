@@ -1,6 +1,7 @@
 .cell{
-    width: 100px;
-    height: 100px;
+    width: 12.5%;
+    height: 12.5%;
+    float: left;
 }
 .white{
     background-color: white;
