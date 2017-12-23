@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import '../css/board.css';
 import Cell from './cell';
-import Piece from './piece';
 
 class Board extends React.Component {
 

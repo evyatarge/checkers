@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Board from './board';
 import Piece from './piece';
 
@@ -8,8 +7,11 @@ class Game extends React.Component {
 
     constructor(props){
             super(props);
+
             this.state = {
-                turn: props.turn
+                turn: props.turn || 'white',
+                whitesMap : [],
+                blacksMap : [],
             };
     }
 
@@ -19,26 +21,35 @@ class Game extends React.Component {
 
         whitePieces = this.initWhites(whitePieces);
         blackPieces = this.initBlacks(blackPieces);
+
         return whitePieces.concat(blackPieces);
     }
     initWhites(whitePieces){
-        var pieces = [];
-        var row=0, piecesInRow=4;
+        let pieces = [];
+        let row=0, piecesInRow=4;
         for(var i=0; i<whitePieces.length; i++){
-            row = i%piecesInRow;
+            row = parseInt(i/piecesInRow, 10);
             let column = this.calculateColumn(i,row);
             pieces.push(<Piece pieceRow={row} pieceColumn={column} pieceColor='white'/>);
+            let location = ""+row+column+"";
+
+            let whitesMap = this.state.whitesMap;
+            whitesMap[location]=true;
         }
         return pieces;
     }
     initBlacks(blackPieces){
-        var pieces = [];
-        var row=7, piecesInRow=4;
+        let pieces = [];
+        let row=7, piecesInRow=4;
         for(var i=0; i<blackPieces.length; i++){
-            row = row-(i%piecesInRow);
-            let column = this.calculateColumn(i,row);
-            column = (column%2)==0 ? column+1 : column-1;
-            pieces.push(<Piece pieceRow={row} pieceColumn={column} pieceColor='black'/>);
+            let currentRow = row-(parseInt(i/piecesInRow, 10));
+            let column = this.calculateColumn(i,currentRow);
+            column = (column%2)===0 ? column+1 : column-1;
+            pieces.push(<Piece pieceRow={currentRow} pieceColumn={column} pieceColor='black'/>);
+            let location = ""+currentRow+column+"";
+
+            let blacksMap = this.state.blacksMap;
+            blacksMap[location]=true;
         }
         return pieces;
     }
